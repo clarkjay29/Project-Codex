@@ -6,12 +6,33 @@
 </head>
 <body>
   <h1>📚 All Books</h1>
-  <p>Here’s where your Codex books will go.</p>
-  <ul>
-    <li>The Sunken Garden</li>
-    <li>Waltz of Four Left Feet</li>
+
+  <h2>Add a new book</h2>
+  <form id="bookForm">
+    <label>Title: <input type="text" id="title" required></label><br><br>
+    <label>Logline: <input type="text" id="logline" required></label><br><br>
+    <button type="submit">Add Book</button>
+  </form>
+
+  <h2>Book List:</h2>
+  <ul id="bookList">
+    <li>The Sunken Garden — A prince escapes into the real world.</li>
+    <li>Waltz of Four Left Feet — Two boys meet by accident and slowly fall in love.</li>
   </ul>
 
-  <p><a href="index.html">← Back to home</a></p>
+  <script>
+    const form = document.getElementById("bookForm");
+    const list = document.getElementById("bookList");
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const title = document.getElementById("title").value;
+      const logline = document.getElementById("logline").value;
+      const li = document.createElement("li");
+      li.textContent = `${title} — ${logline}`;
+      list.appendChild(li);
+      form.reset();
+    });
+  </script>
 </body>
 </html>
